@@ -1,5 +1,16 @@
 import Foundation
 
+enum APIError: LocalizedError {
+    case registrationFailed
+
+    var errorDescription: String? {
+        switch self {
+        case .registrationFailed:
+            return "Registration failed. Please try again."
+        }
+    }
+}
+
 actor APIService {
     static let shared = APIService()
 
@@ -16,6 +27,21 @@ actor APIService {
         let url = URL(string: "\(baseURL)/health")!
         let (_, response) = try await session.data(from: url)
         return (response as? HTTPURLResponse)?.statusCode == 200
+    }
+
+    // MARK: - Auth
+
+    func register(request: RegisterRequest) async throws -> RegisterResponse {
+        let url = URL(string: "\(baseURL)/register")!
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.httpBody = try JSONEncoder().encode(request)
+        let (data, response) = try await session.data(for: urlRequest)
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode >= 400 {
+            throw APIError.registrationFailed
+        }
+        return try decoder.decode(RegisterResponse.self, from: data)
     }
 
     // MARK: - Users
