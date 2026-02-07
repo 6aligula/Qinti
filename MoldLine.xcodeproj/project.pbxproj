@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F0000001 /* MoldLineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000001; };
+		F0000002 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000002; };
+		F0000003 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000003; };
+		F0000004 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000004; };
+		F0000005 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000005; };
+		F0000006 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000006; };
+		F0000007 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000007; };
+		F0000008 /* ConversationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000008; };
+		F0000009 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000009; };
+		F000000A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000A; };
+		F000000B /* ConversationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000B; };
+		F000000C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000C; };
+		F000000D /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000D; };
+		F000000E /* NewRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000E; };
+		F000000F /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000F; };
+		F0000010 /* ConversationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000010; };
+		F0000011 /* ChatInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000011; };
+		F0000012 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000012; };
+		F0000013 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1000013; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F1000001 /* MoldLineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldLineApp.swift; sourceTree = "<group>"; };
+		F1000002 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F1000003 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		F1000004 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F1000005 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		F1000006 /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
+		F1000007 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		F1000008 /* ConversationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewModel.swift; sourceTree = "<group>"; };
+		F1000009 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		F100000A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F100000B /* ConversationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListView.swift; sourceTree = "<group>"; };
+		F100000C /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		F100000D /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
+		F100000E /* NewRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoomView.swift; sourceTree = "<group>"; };
+		F100000F /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
+		F1000010 /* ConversationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRow.swift; sourceTree = "<group>"; };
+		F1000011 /* ChatInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
+		F1000012 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F1000013 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F2000001 /* MoldLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoldLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F3000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4000001 = {
+			isa = PBXGroup;
+			children = (
+				F4000002 /* MoldLine */,
+				F4000009 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4000002 /* MoldLine */ = {
+			isa = PBXGroup;
+			children = (
+				F1000001 /* MoldLineApp.swift */,
+				F1000013 /* Assets.xcassets */,
+				F4000003 /* Models */,
+				F4000004 /* Services */,
+				F4000005 /* ViewModels */,
+				F4000006 /* Views */,
+				F4000008 /* Utilities */,
+			);
+			path = "Sources/MoldLine";
+			sourceTree = "<group>";
+		};
+		F4000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1000002 /* User.swift */,
+				F1000003 /* Conversation.swift */,
+				F1000004 /* Message.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F4000004 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F1000005 /* APIService.swift */,
+				F1000006 /* WebSocketService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F4000005 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F1000007 /* AuthViewModel.swift */,
+				F1000008 /* ConversationsViewModel.swift */,
+				F1000009 /* ChatViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F4000006 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F100000A /* LoginView.swift */,
+				F100000B /* ConversationsListView.swift */,
+				F100000C /* ChatView.swift */,
+				F100000D /* NewChatView.swift */,
+				F100000E /* NewRoomView.swift */,
+				F4000007 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F4000007 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F100000F /* MessageBubble.swift */,
+				F1000010 /* ConversationRow.swift */,
+				F1000011 /* ChatInputBar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F4000008 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F1000012 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F4000009 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2000001 /* MoldLine.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F5000001 /* MoldLine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7000003 /* Build configuration list for PBXNativeTarget "MoldLine" */;
+			buildPhases = (
+				F6000001 /* Sources */,
+				F3000001 /* Frameworks */,
+				F6000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoldLine;
+			productName = MoldLine;
+			productReference = F2000001 /* MoldLine.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F8000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+			};
+			buildConfigurationList = F7000001 /* Build configuration list for PBXProject "MoldLine" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4000001;
+			productRefGroup = F4000009 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F5000001 /* MoldLine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F6000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0000013 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F6000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0000001 /* MoldLineApp.swift in Sources */,
+				F0000002 /* User.swift in Sources */,
+				F0000003 /* Conversation.swift in Sources */,
+				F0000004 /* Message.swift in Sources */,
+				F0000005 /* APIService.swift in Sources */,
+				F0000006 /* WebSocketService.swift in Sources */,
+				F0000007 /* AuthViewModel.swift in Sources */,
+				F0000008 /* ConversationsViewModel.swift in Sources */,
+				F0000009 /* ChatViewModel.swift in Sources */,
+				F000000A /* LoginView.swift in Sources */,
+				F000000B /* ConversationsListView.swift in Sources */,
+				F000000C /* ChatView.swift in Sources */,
+				F000000D /* NewChatView.swift in Sources */,
+				F000000E /* NewRoomView.swift in Sources */,
+				F000000F /* MessageBubble.swift in Sources */,
+				F0000010 /* ConversationRow.swift in Sources */,
+				F0000011 /* ChatInputBar.swift in Sources */,
+				F0000012 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F7000004 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F7000005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F7000006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moldline.chat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F7000007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moldline.chat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F7000001 /* Build configuration list for PBXProject "MoldLine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7000004 /* Debug */,
+				F7000005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7000003 /* Build configuration list for PBXNativeTarget "MoldLine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7000006 /* Debug */,
+				F7000007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = F8000001 /* Project object */;
+}
