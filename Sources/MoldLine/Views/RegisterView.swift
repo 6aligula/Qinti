@@ -5,6 +5,8 @@ struct RegisterView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var viewModel = RegisterViewModel()
     @FocusState private var focusedField: Field?
+    @State private var showPassword = false
+    @State private var showConfirmPassword = false
 
     enum Field: Hashable {
         case nickname, password, confirmPassword, email, phone
@@ -57,9 +59,22 @@ struct RegisterView: View {
                                 Image(systemName: "lock.fill")
                                     .foregroundStyle(.secondary)
                                     .frame(width: 20)
-                                SecureField("Password", text: $viewModel.password)
-                                    .textContentType(.newPassword)
-                                    .focused($focusedField, equals: .password)
+                                Group {
+                                    if showPassword {
+                                        TextField("Password", text: $viewModel.password)
+                                    } else {
+                                        SecureField("Password", text: $viewModel.password)
+                                    }
+                                }
+                                .textContentType(.newPassword)
+                                .focused($focusedField, equals: .password)
+
+                                Button {
+                                    showPassword.toggle()
+                                } label: {
+                                    Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                                        .foregroundStyle(.secondary)
+                                }
                             }
                             .padding()
                             .background(Color.gray.opacity(0.15))
@@ -69,9 +84,22 @@ struct RegisterView: View {
                                 Image(systemName: "lock.fill")
                                     .foregroundStyle(.secondary)
                                     .frame(width: 20)
-                                SecureField("Confirm password", text: $viewModel.confirmPassword)
-                                    .textContentType(.newPassword)
-                                    .focused($focusedField, equals: .confirmPassword)
+                                Group {
+                                    if showConfirmPassword {
+                                        TextField("Confirm password", text: $viewModel.confirmPassword)
+                                    } else {
+                                        SecureField("Confirm password", text: $viewModel.confirmPassword)
+                                    }
+                                }
+                                .textContentType(.newPassword)
+                                .focused($focusedField, equals: .confirmPassword)
+
+                                Button {
+                                    showConfirmPassword.toggle()
+                                } label: {
+                                    Image(systemName: showConfirmPassword ? "eye.slash.fill" : "eye.fill")
+                                        .foregroundStyle(.secondary)
+                                }
                             }
                             .padding()
                             .background(Color.gray.opacity(0.15))
