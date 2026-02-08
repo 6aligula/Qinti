@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LoginView: View {
     @Environment(AuthViewModel.self) private var authVM
+    @State private var showRegister = false
 
     var body: some View {
         NavigationStack {
@@ -61,10 +62,32 @@ struct LoginView: View {
                     .padding(.horizontal, 24)
                 }
 
-                Spacer()
+                // Register button
+                VStack(spacing: 8) {
+                    Text("Don't have an account?")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+
+                    Button {
+                        showRegister = true
+                    } label: {
+                        Text("Create Account")
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.green)
+                            .foregroundStyle(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    .padding(.horizontal, 24)
+                }
+
                 Spacer()
             }
             .navigationTitle("")
+            .sheet(isPresented: $showRegister) {
+                RegisterView()
+            }
             .task {
                 await authVM.loadUsers()
             }
