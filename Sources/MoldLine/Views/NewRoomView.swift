@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct NewRoomView: View {
-    @Environment(AuthViewModel.self) private var authVM
     @Environment(\.dismiss) private var dismiss
     let conversationsVM: ConversationsViewModel
 
@@ -44,13 +43,12 @@ struct NewRoomView: View {
     }
 
     private func createRoom() {
-        guard let userId = authVM.currentUserId else { return }
         let name = roomName.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !name.isEmpty else { return }
 
         isCreating = true
         Task {
-            _ = await conversationsVM.createRoom(name: name, userId: userId)
+            _ = await conversationsVM.createRoom(name: name)
             dismiss()
         }
     }

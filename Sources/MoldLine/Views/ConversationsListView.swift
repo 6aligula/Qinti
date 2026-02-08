@@ -76,14 +76,12 @@ struct ConversationsListView: View {
                 NewRoomView(conversationsVM: conversationsVM)
             }
             .refreshable {
-                if let userId = authVM.currentUserId {
-                    await conversationsVM.loadConversations(userId: userId)
-                }
+                await conversationsVM.loadConversations()
             }
             .task {
                 guard let userId = authVM.currentUserId else { return }
                 conversationsVM.setup(userId: userId)
-                await conversationsVM.loadConversations(userId: userId)
+                await conversationsVM.loadConversations()
             }
         }
     }

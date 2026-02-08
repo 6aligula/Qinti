@@ -57,7 +57,9 @@ struct NewChatView: View {
     private func loadUsers() async {
         isLoading = true
         do {
-            users = try await APIService.shared.getUsers()
+            if let token = KeychainService.loadToken() {
+                users = try await AuthService.shared.getUsers(token: token)
+            }
         } catch {
             // silently fail
         }
@@ -65,9 +67,8 @@ struct NewChatView: View {
     }
 
     private func startDM(with user: User) {
-        guard let userId = authVM.currentUserId else { return }
         Task {
-            _ = await conversationsVM.createDM(otherUserId: user.userId, userId: userId)
+            _ = await conversationsVM.createDM(otherUserId: user.userId)
             dismiss()
         }
     }

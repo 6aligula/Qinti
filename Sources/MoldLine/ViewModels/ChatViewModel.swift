@@ -8,7 +8,7 @@ final class ChatViewModel {
     var messageText = ""
 
     private let convoId: String
-    private let userId: String
+    let userId: String
     private let webSocketService: WebSocketService
 
     init(convoId: String, userId: String, webSocketService: WebSocketService) {
@@ -35,7 +35,7 @@ final class ChatViewModel {
         isLoading = true
         errorMessage = nil
         do {
-            messages = try await APIService.shared.getMessages(convoId: convoId, userId: userId)
+            messages = try await APIService.shared.getMessages(convoId: convoId)
         } catch {
             errorMessage = "Error loading messages: \(error.localizedDescription)"
         }
@@ -48,7 +48,7 @@ final class ChatViewModel {
 
         messageText = ""
         do {
-            let message = try await APIService.shared.sendMessage(convoId: convoId, text: text, userId: userId)
+            let message = try await APIService.shared.sendMessage(convoId: convoId, text: text)
             if !messages.contains(where: { $0.messageId == message.messageId }) {
                 messages.append(message)
             }
