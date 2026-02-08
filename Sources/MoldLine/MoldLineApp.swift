@@ -18,6 +18,9 @@ struct MoldLineApp: App {
                 }
             }
             .environment(authVM)
+            .task {
+                await authVM.validateSession()
+            }
         }
     }
 }

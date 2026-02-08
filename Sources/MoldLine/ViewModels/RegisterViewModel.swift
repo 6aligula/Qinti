@@ -22,7 +22,7 @@ final class RegisterViewModel {
         !confirmPassword.isEmpty && password != confirmPassword
     }
 
-    func register() async -> String? {
+    func register() async -> (userId: String, token: String)? {
         let trimmedName = nickname.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedName.isEmpty, !password.isEmpty else { return nil }
 
@@ -37,12 +37,12 @@ final class RegisterViewModel {
         )
 
         do {
-            let response = try await APIService.shared.register(request: request)
+            let response = try await AuthService.shared.register(request: request)
             registeredUserId = response.userId
             isLoading = false
-            return response.userId
+            return (response.userId, response.token)
         } catch {
-            errorMessage = "Registration failed: \(error.localizedDescription)"
+            errorMessage = error.localizedDescription
             isLoading = false
             return nil
         }

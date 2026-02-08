@@ -164,8 +164,9 @@ struct RegisterView: View {
                     Button {
                         focusedField = nil
                         Task {
-                            if let userId = await viewModel.register() {
-                                authVM.selectUser(userId)
+                            if let result = await viewModel.register() {
+                                authVM.handleAuthResponse(userId: result.userId, token: result.token)
+                                dismiss()
                             }
                         }
                     } label: {
