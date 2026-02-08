@@ -4,6 +4,7 @@ struct ConversationsListView: View {
     @Environment(AuthViewModel.self) private var authVM
     let conversationsVM: ConversationsViewModel
     let webSocketService: WebSocketService
+    let userCache: UserCache
 
     @State private var showNewChat = false
     @State private var showNewRoom = false
@@ -25,7 +26,8 @@ struct ConversationsListView: View {
                         NavigationLink(value: conversation) {
                             ConversationRow(
                                 conversation: conversation,
-                                currentUserId: authVM.currentUserId ?? ""
+                                currentUserId: authVM.currentUserId ?? "",
+                                userCache: userCache
                             )
                         }
                     }
@@ -38,6 +40,7 @@ struct ConversationsListView: View {
                     conversation: conversation,
                     currentUserId: authVM.currentUserId ?? "",
                     webSocketService: webSocketService,
+                    userCache: userCache,
                     onBack: { if !path.isEmpty { path.removeLast() } }
                 )
             }

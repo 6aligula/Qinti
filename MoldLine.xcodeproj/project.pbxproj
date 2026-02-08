@@ -32,6 +32,7 @@
 		F0000017 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000017; };
 		F0000018 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000018; };
 		F0000019 /* ChatViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000019; };
+		F000001A /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001A; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		F1000017 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		F1000018 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F1000019 /* ChatViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewWrapper.swift; sourceTree = "<group>"; };
+		F100001A /* UserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
 		F2000001 /* MoldLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoldLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				F1000006 /* WebSocketService.swift */,
 				F1000017 /* KeychainService.swift */,
 				F1000018 /* AuthService.swift */,
+				F100001A /* UserCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				F0000017 /* KeychainService.swift in Sources */,
 				F0000018 /* AuthService.swift in Sources */,
 				F0000019 /* ChatViewWrapper.swift in Sources */,
+				F000001A /* UserCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
