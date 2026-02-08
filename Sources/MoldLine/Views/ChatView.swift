@@ -4,12 +4,14 @@ struct ChatView: View {
     @Bindable var viewModel: ChatViewModel
     let conversation: Conversation
     let currentUserId: String
+    let userCache: UserCache
     var onBack: (() -> Void)?
 
     var title: String {
         switch conversation.kind {
         case .dm:
-            return conversation.members.first(where: { $0 != currentUserId }) ?? "Chat"
+            let otherUserId = conversation.members.first(where: { $0 != currentUserId }) ?? ""
+            return userCache.name(for: otherUserId)
         case .room:
             return conversation.convoId
         }
@@ -23,7 +25,8 @@ struct ChatView: View {
                         ForEach(viewModel.messages) { message in
                             MessageBubble(
                                 message: message,
-                                isFromCurrentUser: message.from == currentUserId
+                                isFromCurrentUser: message.from == currentUserId,
+                                senderName: userCache.name(for: message.from)
                             )
                             .id(message.id)
                             .padding(.horizontal)

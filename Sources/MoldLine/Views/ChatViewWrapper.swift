@@ -4,6 +4,7 @@ struct ChatViewWrapper: View {
     let conversation: Conversation
     let currentUserId: String
     let webSocketService: WebSocketService
+    let userCache: UserCache
     var onBack: (() -> Void)?
 
     @State private var viewModel: ChatViewModel?
@@ -15,6 +16,7 @@ struct ChatViewWrapper: View {
                     viewModel: viewModel,
                     conversation: conversation,
                     currentUserId: currentUserId,
+                    userCache: userCache,
                     onBack: onBack
                 )
             } else {

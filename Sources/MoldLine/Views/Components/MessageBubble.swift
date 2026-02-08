@@ -3,6 +3,7 @@ import SwiftUI
 struct MessageBubble: View {
     let message: Message
     let isFromCurrentUser: Bool
+    var senderName: String = ""
 
     var body: some View {
         HStack {
@@ -10,7 +11,7 @@ struct MessageBubble: View {
 
             VStack(alignment: isFromCurrentUser ? .trailing : .leading, spacing: 2) {
                 if !isFromCurrentUser {
-                    Text(message.from)
+                    Text(senderName.isEmpty ? message.from : senderName)
                         .font(.caption2)
                         .fontWeight(.semibold)
                         .foregroundStyle(.secondary)

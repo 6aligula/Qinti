@@ -3,12 +3,13 @@ import SwiftUI
 struct ConversationRow: View {
     let conversation: Conversation
     let currentUserId: String
+    var userCache: UserCache?
 
     var displayName: String {
         switch conversation.kind {
         case .dm:
-            let otherMembers = conversation.members.filter { $0 != currentUserId }
-            return otherMembers.first ?? "Unknown"
+            let otherUserId = conversation.members.first(where: { $0 != currentUserId }) ?? ""
+            return userCache?.name(for: otherUserId) ?? otherUserId
         case .room:
             return conversation.convoId
         }
