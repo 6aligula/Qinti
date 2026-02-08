@@ -4,6 +4,7 @@ struct ChatView: View {
     @Bindable var viewModel: ChatViewModel
     let conversation: Conversation
     let currentUserId: String
+    var onBack: (() -> Void)?
 
     var title: String {
         switch conversation.kind {
@@ -37,6 +38,9 @@ struct ChatView: View {
                         }
                     }
                 }
+                .refreshable {
+                    await viewModel.loadMessages()
+                }
             }
 
             if let error = viewModel.errorMessage {
@@ -54,6 +58,21 @@ struct ChatView: View {
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(onBack != nil)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                if let onBack {
+                    Button {
+                        onBack()
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "chevron.left")
+                            Text("Chats")
+                        }
+                    }
+                }
+            }
+        }
         .task {
             await viewModel.loadMessages()
         }

@@ -4,6 +4,7 @@ struct NewChatView: View {
     @Environment(AuthViewModel.self) private var authVM
     @Environment(\.dismiss) private var dismiss
     let conversationsVM: ConversationsViewModel
+    var onConversationCreated: ((Conversation) -> Void)?
 
     @State private var users: [User] = []
     @State private var isLoading = false
@@ -66,10 +67,17 @@ struct NewChatView: View {
         isLoading = false
     }
 
+    /// POST /dm: backend devuelve siempre 200 con { convoId, kind: "dm", members } (getOrCreate).
+    /// Decodificamos como Conversation y navegamos. Si falla (400/401/red) → nil, cerramos hoja.
     private func startDM(with user: User) {
         Task {
-            _ = await conversationsVM.createDM(otherUserId: user.userId)
-            dismiss()
+            let conversation = await conversationsVM.createDM(otherUserId: user.userId)
+            await MainActor.run {
+                if let conv = conversation {
+                    onConversationCreated?(conv)
+                }
+                dismiss()
+            }
         }
     }
 }

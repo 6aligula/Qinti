@@ -7,9 +7,10 @@ struct ConversationsListView: View {
 
     @State private var showNewChat = false
     @State private var showNewRoom = false
+    @State private var path: [Conversation] = []
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             Group {
                 if conversationsVM.isLoading && conversationsVM.conversations.isEmpty {
                     ProgressView("Loading conversations...")
@@ -33,14 +34,11 @@ struct ConversationsListView: View {
             }
             .navigationTitle("Chats")
             .navigationDestination(for: Conversation.self) { conversation in
-                ChatView(
-                    viewModel: ChatViewModel(
-                        convoId: conversation.convoId,
-                        userId: authVM.currentUserId ?? "",
-                        webSocketService: webSocketService
-                    ),
+                ChatViewWrapper(
                     conversation: conversation,
-                    currentUserId: authVM.currentUserId ?? ""
+                    currentUserId: authVM.currentUserId ?? "",
+                    webSocketService: webSocketService,
+                    onBack: { if !path.isEmpty { path.removeLast() } }
                 )
             }
             .toolbar {
@@ -70,7 +68,10 @@ struct ConversationsListView: View {
                 }
             }
             .sheet(isPresented: $showNewChat) {
-                NewChatView(conversationsVM: conversationsVM)
+                NewChatView(conversationsVM: conversationsVM) { newConversation in
+                    showNewChat = false
+                    path = [newConversation]
+                }
             }
             .sheet(isPresented: $showNewRoom) {
                 NewRoomView(conversationsVM: conversationsVM)

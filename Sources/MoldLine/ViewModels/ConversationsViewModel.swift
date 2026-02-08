@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 @Observable
 final class ConversationsViewModel {
     var conversations: [Conversation] = []
@@ -16,10 +17,9 @@ final class ConversationsViewModel {
     func setup(userId: String) {
         self.userId = userId
         webSocketService.connect(userId: userId)
-        webSocketService.onMessageReceived = { [weak self] _ in
-            guard let self else { return }
-            Task {
-                await self.loadConversations()
+        webSocketService.addMessageHandler { [weak self] _ in
+            Task { @MainActor in
+                await self?.loadConversations()
             }
         }
     }

@@ -31,6 +31,7 @@
 		F0000016 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000016; };
 		F0000017 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000017; };
 		F0000018 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000018; };
+		F0000019 /* ChatViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000019; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		F1000016 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		F1000017 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		F1000018 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		F1000019 /* ChatViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewWrapper.swift; sourceTree = "<group>"; };
 		F2000001 /* MoldLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoldLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,7 @@
 				F100000D /* NewChatView.swift */,
 				F100000E /* NewRoomView.swift */,
 				F1000016 /* RegisterView.swift */,
+				F1000019 /* ChatViewWrapper.swift */,
 				F4000007 /* Components */,
 			);
 			path = Views;
@@ -254,6 +257,7 @@
 				F0000016 /* RegisterView.swift in Sources */,
 				F0000017 /* KeychainService.swift in Sources */,
 				F0000018 /* AuthService.swift in Sources */,
+				F0000019 /* ChatViewWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
