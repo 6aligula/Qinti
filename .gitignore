@@ -20,6 +20,9 @@ xcuserdata/
 Packages/
 Package.resolved
 
+# Build output
+build/
+
 # Misc
 *.hmap
 *.ipa
