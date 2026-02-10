@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 @Observable
 final class ConversationsViewModel {
     var conversations: [Conversation] = []
@@ -16,29 +17,28 @@ final class ConversationsViewModel {
     func setup(userId: String) {
         self.userId = userId
         webSocketService.connect(userId: userId)
-        webSocketService.onMessageReceived = { [weak self] _ in
-            guard let self, let userId = self.userId else { return }
-            Task {
-                await self.loadConversations(userId: userId)
+        webSocketService.addMessageHandler { [weak self] _ in
+            Task { @MainActor in
+                await self?.loadConversations()
             }
         }
     }
 
-    func loadConversations(userId: String) async {
+    func loadConversations() async {
         isLoading = true
         errorMessage = nil
         do {
-            conversations = try await APIService.shared.getConversations(userId: userId)
+            conversations = try await APIService.shared.getConversations()
         } catch {
             errorMessage = "Error loading conversations: \(error.localizedDescription)"
         }
         isLoading = false
     }
 
-    func createDM(otherUserId: String, userId: String) async -> Conversation? {
+    func createDM(otherUserId: String) async -> Conversation? {
         do {
-            let conversation = try await APIService.shared.createDM(otherUserId: otherUserId, userId: userId)
-            await loadConversations(userId: userId)
+            let conversation = try await APIService.shared.createDM(otherUserId: otherUserId)
+            await loadConversations()
             return conversation
         } catch {
             errorMessage = "Error creating DM: \(error.localizedDescription)"
@@ -46,10 +46,10 @@ final class ConversationsViewModel {
         }
     }
 
-    func createRoom(name: String, userId: String) async -> Conversation? {
+    func createRoom(name: String) async -> Conversation? {
         do {
-            let room = try await APIService.shared.createRoom(name: name, userId: userId)
-            await loadConversations(userId: userId)
+            let room = try await APIService.shared.createRoom(name: name)
+            await loadConversations()
             return room
         } catch {
             errorMessage = "Error creating room: \(error.localizedDescription)"

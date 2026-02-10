@@ -26,6 +26,13 @@
 		F0000011 /* ChatInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000011; };
 		F0000012 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000012; };
 		F0000013 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1000013; };
+		F0000014 /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000014; };
+		F0000015 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000015; };
+		F0000016 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000016; };
+		F0000017 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000017; };
+		F0000018 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000018; };
+		F0000019 /* ChatViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000019; };
+		F000001A /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001A; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +55,13 @@
 		F1000011 /* ChatInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
 		F1000012 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F1000013 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F1000014 /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
+		F1000015 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		F1000016 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		F1000017 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		F1000018 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		F1000019 /* ChatViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewWrapper.swift; sourceTree = "<group>"; };
+		F100001A /* UserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
 		F2000001 /* MoldLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoldLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -90,6 +104,7 @@
 				F1000002 /* User.swift */,
 				F1000003 /* Conversation.swift */,
 				F1000004 /* Message.swift */,
+				F1000014 /* RegisterRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -99,6 +114,9 @@
 			children = (
 				F1000005 /* APIService.swift */,
 				F1000006 /* WebSocketService.swift */,
+				F1000017 /* KeychainService.swift */,
+				F1000018 /* AuthService.swift */,
+				F100001A /* UserCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -109,6 +127,7 @@
 				F1000007 /* AuthViewModel.swift */,
 				F1000008 /* ConversationsViewModel.swift */,
 				F1000009 /* ChatViewModel.swift */,
+				F1000015 /* RegisterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -121,6 +140,8 @@
 				F100000C /* ChatView.swift */,
 				F100000D /* NewChatView.swift */,
 				F100000E /* NewRoomView.swift */,
+				F1000016 /* RegisterView.swift */,
+				F1000019 /* ChatViewWrapper.swift */,
 				F4000007 /* Components */,
 			);
 			path = Views;
@@ -234,6 +255,13 @@
 				F0000010 /* ConversationRow.swift in Sources */,
 				F0000011 /* ChatInputBar.swift in Sources */,
 				F0000012 /* Constants.swift in Sources */,
+				F0000014 /* RegisterRequest.swift in Sources */,
+				F0000015 /* RegisterViewModel.swift in Sources */,
+				F0000016 /* RegisterView.swift in Sources */,
+				F0000017 /* KeychainService.swift in Sources */,
+				F0000018 /* AuthService.swift in Sources */,
+				F0000019 /* ChatViewWrapper.swift in Sources */,
+				F000001A /* UserCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

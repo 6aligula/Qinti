@@ -4,12 +4,14 @@ struct ConversationsListView: View {
     @Environment(AuthViewModel.self) private var authVM
     let conversationsVM: ConversationsViewModel
     let webSocketService: WebSocketService
+    let userCache: UserCache
 
     @State private var showNewChat = false
     @State private var showNewRoom = false
+    @State private var path: [Conversation] = []
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             Group {
                 if conversationsVM.isLoading && conversationsVM.conversations.isEmpty {
                     ProgressView("Loading conversations...")
@@ -24,7 +26,8 @@ struct ConversationsListView: View {
                         NavigationLink(value: conversation) {
                             ConversationRow(
                                 conversation: conversation,
-                                currentUserId: authVM.currentUserId ?? ""
+                                currentUserId: authVM.currentUserId ?? "",
+                                userCache: userCache
                             )
                         }
                     }
@@ -33,14 +36,12 @@ struct ConversationsListView: View {
             }
             .navigationTitle("Chats")
             .navigationDestination(for: Conversation.self) { conversation in
-                ChatView(
-                    viewModel: ChatViewModel(
-                        convoId: conversation.convoId,
-                        userId: authVM.currentUserId ?? "",
-                        webSocketService: webSocketService
-                    ),
+                ChatViewWrapper(
                     conversation: conversation,
-                    currentUserId: authVM.currentUserId ?? ""
+                    currentUserId: authVM.currentUserId ?? "",
+                    webSocketService: webSocketService,
+                    userCache: userCache,
+                    onBack: { if !path.isEmpty { path.removeLast() } }
                 )
             }
             .toolbar {
@@ -70,20 +71,21 @@ struct ConversationsListView: View {
                 }
             }
             .sheet(isPresented: $showNewChat) {
-                NewChatView(conversationsVM: conversationsVM)
+                NewChatView(conversationsVM: conversationsVM) { newConversation in
+                    showNewChat = false
+                    path = [newConversation]
+                }
             }
             .sheet(isPresented: $showNewRoom) {
                 NewRoomView(conversationsVM: conversationsVM)
             }
             .refreshable {
-                if let userId = authVM.currentUserId {
-                    await conversationsVM.loadConversations(userId: userId)
-                }
+                await conversationsVM.loadConversations()
             }
             .task {
                 guard let userId = authVM.currentUserId else { return }
                 conversationsVM.setup(userId: userId)
-                await conversationsVM.loadConversations(userId: userId)
+                await conversationsVM.loadConversations()
             }
         }
     }

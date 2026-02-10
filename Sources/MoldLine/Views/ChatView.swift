@@ -4,11 +4,14 @@ struct ChatView: View {
     @Bindable var viewModel: ChatViewModel
     let conversation: Conversation
     let currentUserId: String
+    let userCache: UserCache
+    var onBack: (() -> Void)?
 
     var title: String {
         switch conversation.kind {
         case .dm:
-            return conversation.members.first(where: { $0 != currentUserId }) ?? "Chat"
+            let otherUserId = conversation.members.first(where: { $0 != currentUserId }) ?? ""
+            return userCache.name(for: otherUserId)
         case .room:
             return conversation.convoId
         }
@@ -22,7 +25,8 @@ struct ChatView: View {
                         ForEach(viewModel.messages) { message in
                             MessageBubble(
                                 message: message,
-                                isFromCurrentUser: message.from == currentUserId
+                                isFromCurrentUser: message.from == currentUserId,
+                                senderName: userCache.name(for: message.from)
                             )
                             .id(message.id)
                             .padding(.horizontal)
@@ -36,6 +40,9 @@ struct ChatView: View {
                             proxy.scrollTo(lastMessage.id, anchor: .bottom)
                         }
                     }
+                }
+                .refreshable {
+                    await viewModel.loadMessages()
                 }
             }
 
@@ -54,6 +61,21 @@ struct ChatView: View {
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(onBack != nil)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                if let onBack {
+                    Button {
+                        onBack()
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "chevron.left")
+                            Text("Chats")
+                        }
+                    }
+                }
+            }
+        }
         .task {
             await viewModel.loadMessages()
         }
