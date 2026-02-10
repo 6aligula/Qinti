@@ -5,7 +5,7 @@ Contrato del endpoint para alinear backend y cliente iOS.
 ## Request
 
 - **Método:** `POST /dm`
-- **Headers:** `Authorization: Bearer <jwt>`, `x-user-id: <userId>` (legacy)
+- **Headers:** `Authorization: Bearer <jwt>`
 - **Body:** `{ "otherUserId": "<userId del otro usuario>" }`
 
 ## Comportamiento
@@ -35,7 +35,7 @@ El cliente iOS decodifica la respuesta como `Conversation` y navega a la pantall
 ## Errores
 
 - **400:** `otherUserId` ausente o inválido.
-- **401:** falta `Authorization` o `x-user-id`.
+- **401:** falta `Authorization` o token inválido.
 
 ## Uso en iOS
 

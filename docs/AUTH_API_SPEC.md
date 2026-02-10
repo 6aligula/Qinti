@@ -67,9 +67,7 @@ Tras un login/registro exitoso, la API devuelve un **JWT** que la app iOS enviar
 Authorization: Bearer <jwt_token>
 ```
 
-**Importante:** La Chat API existente usa `x-user-id` como header. Durante la migración, el Auth API puede generar el JWT y la Chat API puede:
-1. **(Fase 1)** Seguir aceptando `x-user-id` — la app iOS extrae el `userId` del JWT y lo envía.
-2. **(Fase 2)** Validar el JWT directamente — ambos servicios comparten el mismo `JWT_SECRET`.
+La Chat API valida el JWT directamente — ambos servicios comparten el mismo `JWT_SECRET`.
 
 ---
 
@@ -293,9 +291,7 @@ Para que la Chat API valide los tokens JWT del Auth API:
 const jwt = require('jsonwebtoken');
 
 function authMiddleware(req, res, next) {
-  // Fase 1: soportar ambos métodos
   const token = req.headers.authorization?.replace('Bearer ', '');
-  const legacyUserId = req.headers['x-user-id'];
 
   if (token) {
     try {
@@ -305,12 +301,6 @@ function authMiddleware(req, res, next) {
     } catch (err) {
       return res.status(401).json({ error: 'UNAUTHORIZED' });
     }
-  }
-
-  // Fallback legacy (eliminar en Fase 2)
-  if (legacyUserId) {
-    req.userId = legacyUserId;
-    return next();
   }
 
   return res.status(401).json({ error: 'UNAUTHORIZED' });
@@ -343,9 +333,9 @@ La app ya tiene:
 - `RegisterViewModel` que llama a `POST /register`
 - `APIService.register()` que envía el request
 
-**Pendiente en la app (cuando el Auth API esté listo):**
-- Actualizar `Constants.swift` con la URL del Auth API
-- Guardar el JWT en Keychain tras registro/login
-- Enviar `Authorization: Bearer <token>` en vez de `x-user-id`
-- Añadir pantalla de Login (con nickname + password)
-- Auto-refresh del token
+**Completado:**
+- `Constants.swift` configurado con URLs de Auth API y Chat API
+- JWT guardado en Keychain tras registro/login
+- `Authorization: Bearer <token>` en todas las peticiones
+- Login y Register implementados
+- Validación de sesión al abrir la app
