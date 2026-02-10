@@ -18,9 +18,6 @@ actor APIService {
         if let token = KeychainService.loadToken() {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
-        if let userId = KeychainService.loadUserId() {
-            request.setValue(userId, forHTTPHeaderField: "x-user-id")
-        }
         return request
     }
 
